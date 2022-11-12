@@ -2,17 +2,23 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:10:37
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-12 15:31:34
+LastEditTime: 2022-11-12 22:13:21
 '''
-from db_handler import select_user, update_user
+from db_handler import select_user, update_user, select_equip, new_user
 from buff import BaseBuffFactory
 from equip import BaseEquipFactory
+
+from key_value import EQUIP_TABLE
 
 
 # 角色实体
 class Player:
     def __init__(self, user_id: str) -> None:
         user_data = select_user(user_id=user_id)
+        if user_data == []:
+            new_user(user_id)
+            user_data = select_user(user_id=user_id)
+        user_data = user_data[0]
         self.user_id = user_data[0]
         self.max_hp = user_data[1]
         self.max_mp = user_data[2]
@@ -20,10 +26,14 @@ class Player:
         self.mp = user_data[4]
         self.atk = user_data[5]
         self.amo = user_data[6]
-        
+
         self.skills: dict = {}
         self.buffs: dict = {}
         self.equips: dict = {}
+
+        self.__add_equip()
+        
+
 
     # 打印用户基础数值
     def __str__(self) -> str:
@@ -74,10 +84,14 @@ class Player:
         pass
 
     # 获得装备
-    def add_equip(self, equip, level):
-        self.equips.update({
-            equip.__name__: equip(level)
-        })
+    def __add_equip(self):
+        for key, value in EQUIP_TABLE.items():
+            level = select_equip(key, self.user_id)[0][0]
+            if level == -1:
+                continue
+            self.equips.update({
+                key: value(level)
+            })
 
     #计算装备带来的临时面板
     def equip_temp(self):

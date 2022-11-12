@@ -2,18 +2,15 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 23:07:11
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-12 20:28:18
+LastEditTime: 2022-11-12 21:41:05
 '''
-from entity import Player
-
-
 class NormalAttack:
-    def __init__(self, owner: Player):
+    def __init__(self, owner):
         self.__owner = owner
         self.__power = 1.0
 
     # 计算桑海
-    def calc(self, target: Player):
+    def calc(self, target):
         # 主动发起的
         temp_buff = self.__owner.buff_temp() # 计算BUFF带来的倍率增减
         temp_equip = self.__owner.equip_temp() # 计算装备带来的数值增减
