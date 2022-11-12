@@ -2,7 +2,7 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:10:37
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-12 15:04:13
+LastEditTime: 2022-11-12 15:31:34
 '''
 from db_handler import select_user, update_user
 from buff import BaseBuffFactory
@@ -20,6 +20,7 @@ class Player:
         self.mp = user_data[4]
         self.atk = user_data[5]
         self.amo = user_data[6]
+        
         self.skills: dict = {}
         self.buffs: dict = {}
         self.equips: dict = {}
