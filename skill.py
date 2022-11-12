@@ -2,8 +2,12 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 23:07:11
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-12 21:41:05
+LastEditTime: 2022-11-12 22:37:43
 '''
+# from entity import Player
+# from typing import Optional
+
+
 class NormalAttack:
     def __init__(self, owner):
         self.__owner = owner
