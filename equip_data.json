@@ -1,0 +1,12 @@
+{
+    "WoodenSword":{
+        "base_atk":10,
+        "atk_up":5,
+        "up_cost":20
+    },
+    "WoodenShield":{
+        "base_amo":5,
+        "amo_up":3,
+        "up_cost":20
+    }
+}
