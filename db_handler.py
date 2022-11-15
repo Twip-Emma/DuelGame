@@ -2,10 +2,12 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:12:50
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-12 22:54:06
+LastEditTime: 2022-11-16 00:12:46
 '''
 from pathlib import Path
 import sqlite3
+from key_value import BUFF_TABLE
+
 
 BASE_PATH: str = Path(__file__).absolute().parents[0]
 DB_PATH: str = str(Path(BASE_PATH)/r"gamedata.db")
@@ -81,3 +83,26 @@ def select_skill(skill: str, user_id: str) -> tuple:
     results = cursor.fetchall()
     db.close()
     return results
+
+
+# BUFF自减
+def delete_buff(user_id: str) -> None:
+    db = sqlite3.connect(DB_PATH)
+    cursor = db.cursor()
+
+    sql_end = ""
+    _ = True
+    for buff_name in BUFF_TABLE.keys():
+        sql_1 = ""
+        if _:
+            sql_1 = "set " + buff_name + "= case when " + buff_name + "<1 then 0 else " + buff_name + " -1 end"
+            _ = False
+        else:
+            sql_1 = " , " + buff_name + "= case when " + buff_name + "<1 then 0 else " + buff_name + " -1 end"
+        sql_end += sql_1
+
+    sql = f"update player_buff " + sql_end + " where user_id=?"
+
+    cursor.execute(sql,(user_id, ))
+    db.commit()
+    db.close()
