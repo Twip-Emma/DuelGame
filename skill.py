@@ -2,12 +2,13 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 23:07:11
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-12 22:37:43
+LastEditTime: 2022-11-17 20:05:02
 '''
 # from entity import Player
 # from typing import Optional
 
 
+# 普通攻击
 class NormalAttack:
     def __init__(self, owner):
         self.__owner = owner
@@ -27,13 +28,17 @@ class NormalAttack:
         target_amo = (target.amo + t_temp_equip.amo) * t_temp_buff.amo
 
         # 剩余血量 = 原有血量 - (技能倍率 * (buff加成 * (装备数值 + 基础数值)) - 敌人防御)
-        target.hp -= self.__power * (temp_buff.atk * ( temp_equip.atk + self.__owner.atk)) - target_amo
+        calct = self.__power * (temp_buff.atk * ( temp_equip.atk + self.__owner.atk)) - target_amo
+        target.hp -= calct
 
         # 同步数据:面板、BUFF回合
         target.db_sync().delete_buff_round()  # 被攻击者
         self.__owner.db_sync().delete_buff_round()  # 主动发起者
 
+        print(f"你对 {target.user_id} 造成了 {calct} 伤害！\n\n{target.user_id} 剩余生命值：{target.hp}")
 
+
+# 重击
 class ChargeAttack:
     __power = 2.0
 
