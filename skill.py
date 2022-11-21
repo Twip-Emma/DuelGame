@@ -2,10 +2,16 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 23:07:11
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-17 20:05:02
+LastEditTime: 2022-11-21 16:00:46
 '''
 # from entity import Player
 # from typing import Optional
+
+
+# 计算工厂
+class SkillsComputingFactory:
+    def __init__(self) -> None:
+        pass
 
 
 # 普通攻击
