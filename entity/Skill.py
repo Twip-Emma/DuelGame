@@ -2,11 +2,13 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 23:07:11
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-22 15:31:31
+LastEditTime: 2022-11-22 15:58:33
 '''
 import sys
 sys.path.append("..")
 from entity_mrr.Player import Player
+from entity_mrr.Buff import BaseBuffFactory
+from entity_mrr.Equip import BaseEquipFactory
 
 # from .Player import Player
 # from typing import Optional
@@ -28,12 +30,12 @@ class NormalAttack:
     # 计算桑海
     def calc(self, target: Player):
         # 主动发起的
-        temp_buff = self.__owner.buff_temp() # 计算BUFF带来的倍率增减
-        temp_equip = self.__owner.equip_temp() # 计算装备带来的数值增减
+        temp_buff: BaseBuffFactory = self.__owner.buff_temp() # 计算BUFF带来的倍率增减
+        temp_equip: BaseBuffFactory = self.__owner.equip_temp() # 计算装备带来的数值增减
 
         # 目标的
-        t_temp_buff = target.buff_temp() # 计算BUFF带来的倍率增减
-        t_temp_equip = target.equip_temp() # 计算装备带来的数值增减
+        t_temp_buff: BaseBuffFactory = target.buff_temp() # 计算BUFF带来的倍率增减
+        t_temp_equip: BaseEquipFactory = target.equip_temp() # 计算装备带来的数值增减
 
         # 计算敌人实际护甲
         target_amo = (target.amo + t_temp_equip.amo) * t_temp_buff.amo
