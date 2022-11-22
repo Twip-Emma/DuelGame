@@ -2,13 +2,15 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:10:37
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-21 15:12:24
+LastEditTime: 2022-11-22 15:26:18
 '''
 from db_handler import select_user, update_user, select_equip, new_user, select_buff, select_skill
-from buff import BaseBuffFactory
-from equip import BaseEquipFactory
-
-from key_value import EQUIP_TABLE, BUFF_TABLE, SKILL_TABLE
+from .Buff import BaseBuffFactory
+from .Equip import BaseEquipFactory
+# from pydantic import BaseModel
+import sys
+sys.path.append("..")
+from game_data.key_value import EQUIP_TABLE, BUFF_TABLE, SKILL_TABLE
 
 
 # 角色实体

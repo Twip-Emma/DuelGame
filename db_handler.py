@@ -2,15 +2,15 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:12:50
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-16 00:16:09
+LastEditTime: 2022-11-22 15:27:31
 '''
 from pathlib import Path
 import sqlite3
-from key_value import BUFF_TABLE
+from game_data.key_value import BUFF_TABLE
 
 
 BASE_PATH: str = Path(__file__).absolute().parents[0]
-DB_PATH: str = str(Path(BASE_PATH)/r"gamedata.db")
+DB_PATH: str = str(Path(BASE_PATH)/r"game_data"/r"gamedata.db")
 
 
 # 新建用户操作

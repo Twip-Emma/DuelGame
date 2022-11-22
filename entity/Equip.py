@@ -2,14 +2,15 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-12 13:41:42
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-12 14:50:36
+LastEditTime: 2022-11-22 15:24:20
 '''
 import json
 import copy
 from pathlib import Path
 
-BASE_PATH: str = Path(__file__).absolute().parents[0]
-DATA_PATH: str = str(Path(BASE_PATH)/r"equip_data.json")
+BASE_PATH: str = Path(__file__).absolute().parents[1]
+print(BASE_PATH)
+DATA_PATH: str = str(Path(BASE_PATH)/r"game_data"/r"equip_data.json")
 EQUIP_DATA:dict = json.load(open(DATA_PATH, 'r', encoding='utf8'))
 
 
