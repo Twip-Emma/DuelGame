@@ -2,7 +2,7 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-11 18:08:38
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-12 14:36:42
+LastEditTime: 2022-12-02 22:27:46
 '''
 import copy
 
@@ -42,3 +42,10 @@ class BuffResist:
     def use_buff(self, buffFactory):
         buffFactory.amo_up = buffFactory.amo_up + 0.5
         return buffFactory
+
+
+BUFF_TABLE = {
+    "BuffAnger": BuffAnger,
+    "BuffWarpath": BuffWarpath,
+    "BuffResist": BuffResist
+}

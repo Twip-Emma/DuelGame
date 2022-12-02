@@ -2,11 +2,11 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:12:50
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-22 15:27:31
+LastEditTime: 2022-12-02 22:29:32
 '''
 from pathlib import Path
 import sqlite3
-from game_data.key_value import BUFF_TABLE
+from .entity.Buff import BUFF_TABLE
 
 
 BASE_PATH: str = Path(__file__).absolute().parents[0]

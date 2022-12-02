@@ -2,16 +2,11 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 23:07:11
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-22 15:58:33
+LastEditTime: 2022-12-02 22:33:05
 '''
-import sys
-sys.path.append("..")
-from entity_mrr.Player import Player
-from entity_mrr.Buff import BaseBuffFactory
-from entity_mrr.Equip import BaseEquipFactory
-
-# from .Player import Player
-# from typing import Optional
+from .Player import Player
+from .Buff import BaseBuffFactory
+from .Equip import BaseEquipFactory
 
 
 # 计算工厂
@@ -27,7 +22,7 @@ class NormalAttack:
         self.__power = 1.0
 
 
-    # 计算桑海
+    # 计算伤害
     def calc(self, target: Player):
         # 主动发起的
         temp_buff: BaseBuffFactory = self.__owner.buff_temp() # 计算BUFF带来的倍率增减
@@ -57,3 +52,9 @@ class ChargeAttack:
 
     def get_hurt(self, atk: int) -> int:
         return atk*self.__power
+
+
+SKILL_TABLE = {
+    "NormalAttack": NormalAttack,
+    "ChargeAttack": ChargeAttack
+}

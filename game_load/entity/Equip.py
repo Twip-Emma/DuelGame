@@ -2,7 +2,7 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-12 13:41:42
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-22 15:24:20
+LastEditTime: 2022-12-02 22:28:04
 '''
 import json
 import copy
@@ -50,3 +50,9 @@ class WoodenShield:
     def use_equip(self, equipFactory):
         equipFactory.amo_up += self.amo_up
         return equipFactory
+
+
+EQUIP_TABLE = {
+    "WoodenSword": WoodenSword,
+    "WoodenShield": WoodenShield
+}

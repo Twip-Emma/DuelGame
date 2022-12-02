@@ -2,12 +2,12 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:10:30
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-11-22 15:19:48
+LastEditTime: 2022-12-02 22:26:04
 '''
-from entity.Player import Player
-from entity.Skill import NormalAttack
+from game_load.entity.Player import Player
+from game_load.entity.Skill import NormalAttack
 from os import system
-from db_handler import select_user, new_user
+from game_load.db_handler import select_user, new_user
 from time import sleep
 
 
