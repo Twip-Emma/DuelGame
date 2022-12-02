@@ -2,12 +2,12 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:10:37
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-12-02 22:32:38
+LastEditTime: 2022-12-02 22:48:12
 '''
 from ..db_handler import select_user, update_user, select_equip, new_user, select_buff, select_skill
 from .Buff import BaseBuffFactory, BUFF_TABLE
 from .Equip import BaseEquipFactory, EQUIP_TABLE
-from .Skill import SKILL_TABLE
+
 
 
 # 角色实体
@@ -65,6 +65,7 @@ class Player():
 
     # 获得技能
     def __add_skill(self):
+        from .Skill import SKILL_TABLE
         for key,value in SKILL_TABLE.items():
             learn = select_skill(key, self.user_id)[0][0]
             if learn <= 0:
