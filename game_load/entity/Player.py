@@ -2,9 +2,9 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:10:37
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-12-02 22:48:12
+LastEditTime: 2022-12-04 19:46:44
 '''
-from ..db_handler import select_user, update_user, select_equip, new_user, select_buff, select_skill
+from ..db_handler import select_user, update_user, select_equip, new_user, select_buff, select_skill, delete_buff
 from .Buff import BaseBuffFactory, BUFF_TABLE
 from .Equip import BaseEquipFactory, EQUIP_TABLE
 
@@ -51,15 +51,15 @@ class Player():
         return (text)
 
     # 角色攻击
-    def attack(self, skill: str, target) -> None:
-        target.attacked(self.skills[skill.__name__])
+    def attack(self, skill: str, target) -> str:
+        return target.attacked(self.skills[skill.__name__])
 
     # 角色受击
-    def attacked(self, skill) -> None:
-        skill.calc(self)
+    def attacked(self, skill) -> str:
+        return skill.calc(self)
 
     # 数据库同步基础属性
-    def db_sync(self) -> None:
+    def db_sync(self) -> "Player":
         update_user(self)
         return self
 
@@ -85,7 +85,7 @@ class Player():
             })
 
     # 根据已有BUFF计算临时角色面板
-    def buff_temp(self):
+    def buff_temp(self) -> "Player":
         factory = BaseBuffFactory(self)
         for _, buff_entity in self.buffs.items():
             factory = buff_entity.use_buff(factory)
@@ -93,7 +93,7 @@ class Player():
 
     # 所有BUFF减少一回合
     def delete_buff_round(self):
-        pass
+        delete_buff(user_id=self.user_id)
 
     # 获得装备
     def __add_equip(self):
@@ -106,7 +106,7 @@ class Player():
             })
 
     #计算装备带来的临时面板
-    def equip_temp(self):
+    def equip_temp(self) -> "Player":
         factory = BaseEquipFactory(self)
         for _, buff_entity in self.equips.items():
             factory = buff_entity.use_equip(factory)

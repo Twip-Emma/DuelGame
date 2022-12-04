@@ -2,7 +2,7 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:10:30
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-12-02 22:26:04
+LastEditTime: 2022-12-04 19:47:08
 '''
 from game_load.entity.Player import Player
 from game_load.entity.Skill import NormalAttack
@@ -77,7 +77,7 @@ if __name__ == "__main__":
                         b = Player(target)
                         if choice_list[1] == "普通攻击":
                             try:
-                                a.attack(NormalAttack, b)
+                                print(a.attack(NormalAttack, b))
                             except:
                                 print("你没有学会这个技能!")
                             print("5秒后返回...")
