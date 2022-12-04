@@ -2,10 +2,10 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:10:30
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-12-04 19:47:08
+LastEditTime: 2022-12-04 20:05:48
 '''
 from game_load.entity.Player import Player
-from game_load.entity.Skill import NormalAttack
+from game_load.entity.Skill import NormalAttack, ChargeAttack
 from os import system
 from game_load.db_handler import select_user, new_user
 from time import sleep
@@ -78,6 +78,13 @@ if __name__ == "__main__":
                         if choice_list[1] == "普通攻击":
                             try:
                                 print(a.attack(NormalAttack, b))
+                            except:
+                                print("你没有学会这个技能!")
+                            print("5秒后返回...")
+                            sleep(5)
+                        elif choice_list[1] == "重击":
+                            try:
+                                print(a.attack(ChargeAttack, b))
                             except:
                                 print("你没有学会这个技能!")
                             print("5秒后返回...")
