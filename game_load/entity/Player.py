@@ -2,7 +2,7 @@
 Author: 七画一只妖 1157529280@qq.com
 Date: 2022-11-10 22:10:37
 LastEditors: 七画一只妖 1157529280@qq.com
-LastEditTime: 2022-12-04 19:46:44
+LastEditTime: 2022-12-06 15:57:35
 '''
 from ..db_handler import select_user, update_user, select_equip, new_user, select_buff, select_skill, delete_buff
 from .Buff import BaseBuffFactory, BUFF_TABLE
@@ -39,16 +39,19 @@ class Player():
 
 
     # 打印用户基础数值
-    def __str__(self) -> str:
+    def get_data(self) -> dict:
         temp_equip = self.equip_temp()
-
-        text = "==========用户：" + str(self.user_id) + "==========\n"
-        text += "生命值：" + str(self.hp) + "/" + str(self.max_hp)
-        text += " | 魔法值：" + str(self.mp) + "/" + str(self.max_mp) + "\n"
-        text += "攻击：" + str(self.atk) + "+" + str(temp_equip.atk)
-        text += " | 防御：" + str(self.amo) + "+" + str(temp_equip.amo)
-        
-        return (text)
+        return {
+            "user_id": self.user_id,
+            "hp": self.hp,
+            "max_hp": self.max_hp,
+            "mp": self.mp,
+            "max_mp": self.max_mp,
+            "atk": self.atk,
+            "atk_add": temp_equip.atk,
+            "amo": self.amo,
+            "amo_add": temp_equip.amo
+        }
 
     # 角色攻击
     def attack(self, skill: str, target) -> str:

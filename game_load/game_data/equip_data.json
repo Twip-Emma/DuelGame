@@ -3,12 +3,16 @@
         "name":"木剑",
         "base_atk":10,
         "atk_up":5,
-        "up_cost":20
+        "base_cost": 100,
+        "up_cost":20,
+        "txt":"新手武器，萌新用了都说好！"
     },
     "WoodenShield":{
         "name":"木盾",
         "base_amo":5,
         "amo_up":3,
-        "up_cost":20
+        "base_cost": 100,
+        "up_cost":20,
+        "txt":"新手武器，萌新用了都说好！"
     }
 }
